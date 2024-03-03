@@ -23,6 +23,6 @@ public class AccuWeatherApi {
         JSONObject temperature = accuWeatherTemperature.getJSONObject("Temperature");
         JSONObject metric = temperature.getJSONObject("Metric");
         Double value = metric.getDouble("Value");
-        System.out.println(value);
+        System.out.println("Temperature from AccuWeather states it is: " + value);
     }
 }

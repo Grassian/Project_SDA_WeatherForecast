@@ -12,9 +12,9 @@ public static void setGeoCoordinates (Location location) throws Exception {
     JSONArray content = new JSONArray(json);
     JSONObject jsonObject = (JSONObject) content.get(0);
     String lat = jsonObject.getString("lat");
-        System.out.println(lat);
+        System.out.println("Latitude is: " + lat);
     String lon = jsonObject.getString("lon");
-    System.out.println(lon);
+    System.out.println("Longitude is: " +lon);
 
     location.setLat(lat);
     location.setLon(lon);

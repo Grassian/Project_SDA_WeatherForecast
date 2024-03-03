@@ -12,8 +12,15 @@ public class OpenWeatherApi {
 
            JSONObject jsonOpenWeather = new JSONObject(httpRequest);
            JSONObject main = jsonOpenWeather.getJSONObject("main");
+           JSONObject wind = jsonOpenWeather.getJSONObject("wind");
            Double temp = main.getDouble("temp");
-           System.out.println(temp);
+           Integer humidity = main.getInt("humidity");
+           Integer pressure = main.getInt("pressure");
+           Double windspeed = wind.getDouble("speed");
+           System.out.println("Temperature from OpenWeather states it is: " + temp);
+           System.out.println("Humidity from OpenWeather states it is: " + humidity);
+           System.out.println("Air pressure from OpenWeather states it is: " + pressure);
+           System.out.println("Wind speed from OpenWeather states it is: " + windspeed);
 
        }
 
