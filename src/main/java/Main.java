@@ -44,6 +44,31 @@ public class Main {
         JSONObject main = jsonOpenWeather.getJSONObject("main");
         Double temp = main.getDouble("temp");
         System.out.println(temp);
+
+        //http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=52.229676,21.012229&apikey=EjIs6w02WNNFJeJ4P72Bv4TkEVepCFcD
+
+        String weatherLink2 = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=" + lat +","+ lon + "&apikey=EjIs6w02WNNFJeJ4P72Bv4TkEVepCFcD";
+        String json3 = ApiClient.sendHttpRequest(weatherLink2);
+        System.out.println(json3);
+
+        JSONObject jsonAccuWeather = new JSONObject(json3);
+        Integer key = jsonAccuWeather.getInt("Key");
+        System.out.println(key);
+
+//        http://dataservice.accuweather.com/currentconditions/v1/{Key}?apikey=EjIs6w02WNNFJeJ4P72Bv4TkEVepCFcD
+        String weatherLink3 = "http://dataservice.accuweather.com/currentconditions/v1/" + key + "?apikey=EjIs6w02WNNFJeJ4P72Bv4TkEVepCFcD";
+        String json4 = ApiClient.sendHttpRequest(weatherLink3);
+        System.out.println(json4);
+
+        JSONArray accuWeatherArray = new JSONArray(json4);
+        JSONObject accuWeatherTemperature = (JSONObject) accuWeatherArray.get(0);
+        JSONObject temperature = accuWeatherTemperature.getJSONObject("Temperature");
+        JSONObject metric = temperature.getJSONObject("Metric");
+        Double value  = metric.getDouble("Value");
+        System.out.println(value);
+
+
+
     }
 
 
