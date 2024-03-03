@@ -6,6 +6,10 @@ public class Location {
     private String postCode;
     private String street;
 
+    private String lat;
+
+    private String lon;
+
 
     public String getDetails () {
        return getCountry() + "," + getCity() + "," + getPostCode() + "," + getStreet();
@@ -41,5 +45,21 @@ public class Location {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
     }
 }
