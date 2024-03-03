@@ -1,5 +1,7 @@
 
 import org.Location;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.Scanner;
 
@@ -24,7 +26,24 @@ public class Main {
         String json = ApiClient.sendHttpRequest(link);
         System.out.println(json);
 
+        JSONArray content = new JSONArray(json);
+        JSONObject jsonObject = (JSONObject) content.get(0);
+        String lat = jsonObject.getString("lat");
+        System.out.println(lat);
+        String lon = jsonObject.getString("lon");
+        System.out.println(lon);
 
+//        https://api.openweathermap.org/data/2.5/weather?lat=52.229676&lon=21.012229&appid=29a9b093e8a39ce93b7acc545b128a04
+
+        String openWeatherApi = location.getDetails();
+        String weatherLink1 = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=29a9b093e8a39ce93b7acc545b128a04";
+        String json2 = ApiClient.sendHttpRequest(weatherLink1);
+        System.out.println(json2);
+
+        JSONObject jsonOpenWeather = new JSONObject(json2);
+        JSONObject main = jsonOpenWeather.getJSONObject("main");
+        Double temp = main.getDouble("temp");
+        System.out.println(temp);
     }
 
 
